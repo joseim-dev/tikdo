@@ -49,7 +49,7 @@ export default function FinishPage() {
   return (
     <div className="min-h-screen bg-[#f2e1d5] py-10 px-4">
       <div
-        className={`${vt323.className} max-w-md mx-auto bg-white border-2 border-dashed border-[#312C48] rounded-none p-8 text-black`}
+        className={`${vt323.className} max-w-md mx-auto bg-[#D4D1CB] border-2 border-dashed border-[#312C48] rounded-sm p-8 text-black`}
       >
         {/* 영수증 헤더 */}
         <div className="text-center border-b-2 border-dashed border-[#312C48] pb-4">
@@ -116,7 +116,7 @@ export default function FinishPage() {
 
         {/* 푸터 */}
         <div className="mt-4 text-center">
-          <p className="text-sm">*** THANK YOU FOR YOUR HARD WORK ***</p>
+          <p className="text-sm">*** KEEP GRINDING. TRUST THE PROCESS ***</p>
           <p className="text-sm">================================</p>
           <CustomButton
             variant="primary"
