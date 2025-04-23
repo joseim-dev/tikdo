@@ -31,11 +31,11 @@ export default function Home() {
 
   const handleStartTimer = () => {
     if (hours === 0 && minutes === 0) {
-      alert("시간을 설정해주세요!");
+      alert("Please set a time");
       return;
     }
     if (todos.length === 0) {
-      alert("할 일을 하나 이상 추가해주세요!");
+      alert("Add a To Do list");
       return;
     }
     // resetTimer();
