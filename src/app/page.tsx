@@ -48,7 +48,7 @@ export default function Home() {
       <div className="items-center justify-items-center min-h-screen font-fredoka pb-[80px]">
         <div className="w-full max-w-md flex-col items-start pt-10 mx-auto">
           <h1 className="text-[40px] text-[#312C48] font-medium w-full text-center mb-5">
-            How long will you work?
+            Set a time and task. Work on it.
           </h1>
 
           {/* 시간 입력 */}
