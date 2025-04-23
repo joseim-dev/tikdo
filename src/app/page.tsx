@@ -46,13 +46,16 @@ export default function Home() {
     <div className="bg-[#f2e1d5] min-h-screen">
       <Header />
       <div className="items-center justify-items-center min-h-screen font-fredoka pb-[80px]">
-        <div className="w-full max-w-md flex-col items-start pt-10 mx-auto">
-          <h1 className="text-[40px] text-[#312C48] font-medium w-full text-center mb-5">
-            Set a time and task. Work on it.
+        <div className="w-full max-w-md flex-col items-start pt-6 mx-auto">
+          <h1 className="text-[38px] text-[#312C48] font-medium w-full text-center mb-1">
+            Set Time. Set Tasks.
           </h1>
+          <h2 className="text-[24px] text-gray-400 font-medium w-full text-center mb-5">
+            Work on it. Trust the process.
+          </h2>
 
           {/* 시간 입력 */}
-          <div className="w-full h-[300px] bg-[#312C48] rounded-2xl flex justify-center items-center flex-col py-4 px-8">
+          <div className="w-full h-[260px] bg-[#312C48] rounded-2xl flex justify-center items-center flex-col py-4 px-8">
             <div className="flex gap-4 text-[#F9F5F2] items-center justify-center w-full">
               <div className="flex flex-col items-center w-[48%]">
                 <input
@@ -86,8 +89,10 @@ export default function Home() {
             </div>
           </div>
 
+          <div className="w-full h-[1px] bg-gray-400 mt-[40px]" />
+
           {/* 입력창 + 플러스 버튼 */}
-          <div className="flex w-full items-center gap-2 mt-[40px]">
+          <div className="flex w-full items-center gap-2 mt-[30px]">
             <input
               type="text"
               placeholder="Enter a To Do"
