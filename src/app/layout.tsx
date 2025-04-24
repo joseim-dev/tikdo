@@ -3,6 +3,7 @@ import { Fredoka } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { TimerProvider } from "@/context/TimerContext";
+import { Analytics } from "@vercel/analytics/next";
 
 // Fredoka 폰트 설정
 const fredoka = Fredoka({
@@ -37,6 +38,7 @@ export default function RootLayout({
 
       <body className={`${fredoka.variable} antialiased`}>
         <TimerProvider>{children}</TimerProvider>
+        <Analytics />
       </body>
     </html>
   );
