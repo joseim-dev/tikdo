@@ -15,6 +15,8 @@ export default function FinishPage() {
   const router = useRouter();
   const {
     todos,
+    hours,
+    minutes,
     startTime,
     endTime,
     elapsedTime,
@@ -73,7 +75,13 @@ export default function FinishPage() {
             </div>
             <div className="flex justify-between">
               <span>TOTAL TIME:</span>
-              <span>{formatTime(elapsedTime)}</span>
+              <span>{formatTime(hours * 3600 + minutes * 60)}</span>
+            </div>
+            <div className="flex justify-between">
+              <span>TIME USED:</span>
+              <span>
+                {formatTime(hours * 3600 + minutes * 60 - elapsedTime)}
+              </span>
             </div>
           </div>
         </div>

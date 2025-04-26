@@ -53,7 +53,7 @@ export default function SubToDoItem({
           </span>
           {isCompleted && completedAt !== undefined && (
             <span className="text-sm text-gray-500">
-              Completed at {formatTime(completedAt)}
+              Completed in {formatTime(completedAt)}
             </span>
           )}
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IoPlay, IoPause, IoHome } from "react-icons/io5";
 import SubToDoItem from "@/components/SubToDoItem";
 import CustomButton from "@/components/CustomButton";
@@ -24,6 +24,7 @@ export default function TimerPage() {
     toggleCompleteTodo,
     deleteTodo,
   } = useTimer();
+  const [passedTime, setPassedTime] = useState(0);
 
   // 초기 타이머 시간 설정 + 자동 시작
   useEffect(() => {
@@ -35,9 +36,10 @@ export default function TimerPage() {
     }
 
     if (!isInitialized.current) {
-      setElapsedTime(totalSeconds);
+      setElapsedTime(totalSeconds); // 카운트다운을 위한 시간
+      setPassedTime(0); // 경과 시간
       isInitialized.current = true;
-      startTimer(); // ✅ 자동 시작
+      startTimer();
     }
   }, [hours, minutes, setElapsedTime, router, startTimer]);
 
@@ -45,7 +47,7 @@ export default function TimerPage() {
   useEffect(() => {
     let interval: NodeJS.Timeout;
 
-    if (isRunning && elapsedTime > 0) {
+    if (isRunning) {
       interval = setInterval(() => {
         setElapsedTime((prev: number) => {
           if (prev <= 1) {
@@ -56,13 +58,15 @@ export default function TimerPage() {
           }
           return prev - 1;
         });
+
+        setPassedTime((prev) => prev + 1);
       }, 1000);
     }
 
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [isRunning, elapsedTime, setElapsedTime, finishTimer]);
+  }, [isRunning, finishTimer]);
 
   // 타이머 종료 후 /finish로 이동
   useEffect(() => {
@@ -85,6 +89,10 @@ export default function TimerPage() {
     finishTimer();
     shouldRedirect.current = true;
     router.push("/finish");
+  };
+
+  const handleToggleComplete = (id: string) => {
+    toggleCompleteTodo(id, passedTime);
   };
 
   return (
@@ -136,9 +144,7 @@ export default function TimerPage() {
                       key={todo.id}
                       text={todo.text}
                       isCompleted={false}
-                      onComplete={() =>
-                        toggleCompleteTodo(todo.id, elapsedTime)
-                      }
+                      onComplete={() => handleToggleComplete(todo.id)}
                       onDelete={() => deleteTodo(todo.id)}
                     />
                   ))}
@@ -159,9 +165,7 @@ export default function TimerPage() {
                       text={todo.text}
                       isCompleted={true}
                       completedAt={todo.completedAt}
-                      onComplete={() =>
-                        toggleCompleteTodo(todo.id, elapsedTime)
-                      }
+                      onComplete={() => handleToggleComplete(todo.id)}
                       onDelete={() => deleteTodo(todo.id)}
                     />
                   ))}
