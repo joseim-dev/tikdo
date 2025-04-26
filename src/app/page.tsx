@@ -38,7 +38,6 @@ export default function Home() {
       alert("Add a To Do list");
       return;
     }
-    // resetTimer();
     router.push("/timer");
   };
 
@@ -59,22 +58,26 @@ export default function Home() {
             <div className="flex gap-4 text-[#F9F5F2] items-center justify-center w-full">
               <div className="flex flex-col items-center w-[48%]">
                 <input
-                  type="number"
-                  min="0"
-                  max="23"
-                  value={hours}
-                  onChange={(e) => setHours(Number(e.target.value))}
+                  type="text"
+                  value={String(hours)}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, ""); // 숫자만 남기기
+                    setHours(value === "" ? 0 : Math.min(23, parseInt(value)));
+                  }}
                   className="w-[150px] text-[120px] text-center bg-transparent focus:outline-none appearance-none h-fit"
                 />
               </div>
               <span className="text-[80px] w-[4%]">:</span>
               <div className="flex flex-col items-center w-[48%]">
                 <input
-                  type="number"
-                  min="0"
-                  max="59"
-                  value={minutes}
-                  onChange={(e) => setMinutes(Number(e.target.value))}
+                  type="text"
+                  value={String(minutes)}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, ""); // 숫자만 남기기
+                    setMinutes(
+                      value === "" ? 0 : Math.min(59, parseInt(value))
+                    );
+                  }}
                   className="w-[150px] text-[120px] text-center bg-transparent focus:outline-none appearance-none"
                 />
               </div>

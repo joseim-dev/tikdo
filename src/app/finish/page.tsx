@@ -126,6 +126,10 @@ export default function FinishPage() {
               clearTimerStorage();
               initializeTodo();
               router.push("/");
+              window.open(
+                "https://www.profitableratecpm.com/vhfhpcgctp?key=ba19d665601588c24ff335f5cab9b795",
+                "_blank"
+              );
             }}
           >
             Start New Session
